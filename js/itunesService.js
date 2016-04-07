@@ -25,6 +25,4 @@ angular.module('itunes').service('itunesService', function($http, $q){
       return defer.promise;
     };
 
-
-
 });

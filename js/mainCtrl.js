@@ -5,19 +5,25 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
   //this means when you make your iTunes request, you'll need to get back the information,
   //parse it accordingly, then set it to songData on the scope -> $scope.songData = ...
 
+  // creating the function for the input box filter
+  $scope.filterOptions = {
+      filterText: ''
+  };
 
   $scope.gridOptions = {
       data: 'songData',
       height: '110px',
       sortInfo: {fields: ['Song', 'Artist', 'Collection', 'Type'], directions: ['asc']},
+      // needed to add this so the filter would work with the grid layout
+      filterOptions: $scope.filterOptions,
       columnDefs: [
         {field: 'previewUrl', displayName: 'Play', width: '40px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a href="{{row.getProperty(col.field)}}"><img src="http://www.icty.org/x/image/Miscellaneous/play_icon30x30.png"></a></div>'},
         {field: 'artistName', displayName: 'Artist'},
-        {field: 'trackName', displayName: 'Song Title'},
+        {field: 'trackName', displayName: 'Track Title'},
         {field: 'collectionName', displayName: 'Collection'},
-        {field: 'artworkUrl30', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
-        {field: 'kind', displayName: 'Type'},
+        {field: 'artworkUrl60', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'primaryGenreName', displayName: 'Genre'},
+        {field: 'kind', displayName: 'Media Type'},
         {field: 'collectionPrice', displayName: 'Collection Price'},
       ]
   };
@@ -42,6 +48,9 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
     });
 
   };
+});
+//--------------------------------------------------------------------------------------------------------------
+// I changed the grid data above instead of doing the looping directions below.
 
 
   //Check that the above method is working by entering a name into the input
@@ -70,4 +79,3 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
   //($scope.songData = myFinalArray) then ng-grid will see that and populate the page.
 
     //Code here
-});
