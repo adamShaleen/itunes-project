@@ -20,11 +20,11 @@ angular.module('itunes').controller('mainCtrl', function($scope, itunesService){
         {field: 'previewUrl', displayName: 'Play', width: '40px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a href="{{row.getProperty(col.field)}}"><img src="http://www.icty.org/x/image/Miscellaneous/play_icon30x30.png"></a></div>'},
         {field: 'artistName', displayName: 'Artist'},
         {field: 'trackName', displayName: 'Track Title'},
-        {field: 'collectionName', displayName: 'Collection'},
+        {field: 'collectionName', displayName: 'Album'},
         {field: 'artworkUrl60', displayName: 'Album Art', width: '110px', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><img src="{{row.getProperty(col.field)}}"></div>'},
         {field: 'primaryGenreName', displayName: 'Genre'},
         {field: 'kind', displayName: 'Media Type'},
-        {field: 'collectionPrice', displayName: 'Collection Price'},
+        {field: 'collectionPrice', displayName: 'Album Price'},
       ]
   };
 
